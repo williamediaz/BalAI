@@ -1,9 +1,12 @@
-using BalotoAI.Infrastructure.Data;
+using BalotoAI.Infrastructure.Repositories;
 using BalotoAI.Infrastructure.Services;
-using BalotoAI.Application;
+using BalotoAI.Application.Behaviors;
+using FluentValidation;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using MediatR;
+using BalotoAI.Infrastructure.Data;
+using BalotoAI.Domain.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,8 +24,18 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<BalotoDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection") ?? "Server=localhost;Database=BalotoAI;Trusted_Connection=True;"));
 
+// Application / Infrastructure registrations
 builder.Services.AddScoped<ISimulationService, SimulationService>();
+builder.Services.AddScoped<ITicketRepository, TicketRepository>();
+builder.Services.AddScoped<IDrawRepository, DrawRepository>();
+builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
+
+// MediatR
 builder.Services.AddMediatR(typeof(BalotoAI.Application.Interfaces.ISimulationService).Assembly);
+
+// FluentValidation and pipeline
+builder.Services.AddValidatorsFromAssemblyContaining<BalotoAI.Application.Validators.CreateDrawValidator>();
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

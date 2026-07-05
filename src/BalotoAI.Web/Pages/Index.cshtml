@@ -1,0 +1,18 @@
+@page
+@model IndexModel
+
+<h1>BalotoAI</h1>
+<p>Solución Clean Architecture - scaffold inicial.</p>
+<form method="post">
+    <label>Iterations: <input asp-for="Iterations" /></label>
+    <button type="submit">Run Simulation</button>
+</form>
+
+@if (Model.Result != null)
+{
+    <div>
+        <h3>Result</h3>
+        <p>Iterations: @Model.Result.Iterations</p>
+        <p>Win probability: @Model.Result.WinProbability</p>
+    </div>
+}

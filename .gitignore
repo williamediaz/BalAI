@@ -1,0 +1,25 @@
+/bin/
+obj/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.idea/
+.vscode/
+.env
+appsettings.*.json
+logs/
+*.db
+*.sqlite
+
+# Docker
+**/docker-compose.*.yml
+
+# Build
+*.dll
+*.exe
+*.log
+
+# JetBrains Rider
+.idea/

@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using BalotoAI.Domain.Entities;
+
+namespace BalotoAI.Domain.Repositories
+{
+    public interface ITicketRepository
+    {
+        Task<Ticket?> GetByIdAsync(Guid id);
+        Task AddAsync(Ticket ticket);
+        Task<IEnumerable<Ticket>> ListAsync();
+    }
+
+    public interface IDrawRepository
+    {
+        Task<Draw?> GetByIdAsync(Guid id);
+        Task AddAsync(Draw draw);
+        Task<IEnumerable<Draw>> ListAsync();
+    }
+
+    public interface IPlayerRepository
+    {
+        Task<Player?> GetByIdAsync(Guid id);
+        Task AddAsync(Player player);
+        Task<IEnumerable<Player>> ListAsync();
+    }
+}

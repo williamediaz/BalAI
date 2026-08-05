@@ -1,0 +1,33 @@
+@page
+@model BalAI.Web.Pages.Dashboard.IndexModel
+
+<h1>Dashboard</h1>
+<canvas id="balancesChart" width="800" height="400"></canvas>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        async function loadChart() {
+            const res = await fetch('/api/balances');
+            const data = await res.json();
+            const labels = data.map(d => new Date(d.createdAt).toLocaleString());
+            const amounts = data.map(d => d.amount);
+
+            const ctx = document.getElementById('balancesChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Balances over time',
+                        data: amounts,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)'
+                    }]
+                }
+            });
+        }
+
+        loadChart();
+    </script>
+}

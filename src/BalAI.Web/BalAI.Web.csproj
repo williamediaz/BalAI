@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BalAI.Application\BalAI.Application.csproj" />
     <ProjectReference Include="..\BalAI.Infrastructure\BalAI.Infrastructure.csproj" />
+    <ProjectReference Include="..\BalAI.ML\BalAI.ML.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MediatR" Version="12.0.0" />

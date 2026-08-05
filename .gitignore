@@ -1,0 +1,50 @@
+/bin/
+obj/
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+
+# NuGet
+*.nupkg
+.packages
+.nuget/
+
+# Build
+build/
+**/bin/
+**/obj/
+
+# Rider
+.idea/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# User secrets
+secrets.json
+
+# Logs
+*.log
+
+# Database
+*.mdf
+*.ldf
+
+# Docker
+docker-compose.override.yml
+
+# Coverage
+.coverage
+coverage.opencover.xml
+
+# Test result
+TestResults/
+
+# Local DB
+localdb/

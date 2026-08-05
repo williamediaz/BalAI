@@ -1,0 +1,12 @@
+@page
+@model BalAI.Web.Pages.Balances.CreateModel
+
+<h1>Crear Balance</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Amount"></label>
+        <input asp-for="Amount" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Crear</button>
+</form>

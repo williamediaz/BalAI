@@ -1,0 +1,28 @@
+@page
+@model BalAI.Web.Pages.Balances.IndexModel
+
+<h1>Balances</h1>
+<p><a asp-page="./Create">Crear balance</a></p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Amount</th>
+            <th>Created At</th>
+        </tr>
+    </thead>
+    <tbody>
+    @if (Model.Balances != null)
+    {
+        foreach (var b in Model.Balances)
+        {
+            <tr>
+                <td>@b.Id</td>
+                <td>@b.Amount</td>
+                <td>@b.CreatedAt.ToString("u")</td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
